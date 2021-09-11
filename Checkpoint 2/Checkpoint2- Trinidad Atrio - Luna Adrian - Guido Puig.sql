@@ -40,7 +40,8 @@ SELECT idUsuario as "ID", nombre as "Nombre", email as "E-mail", fechaNacimiento
 TIMESTAMPDIFF(YEAR, fechaNacimiento ,CURDATE()) as "Edad", Pais_idPais as "Codigo de Pais" FROM usuario;
 
 
-SELECT titulo, MAX(tamanio) FROM video;
+SELECT titulo, MAX(tamanio) FROM video;   #esta mal!! trae el maximo tamañao pero trae el primer titulo q encuentra... hacerlo de la siguiente manera:
+SELECT titulo, tamanio FROM video order by tamanio desc limit 1;
 
 SELECT fecha, tipoReaccion_idTipoReaccion as "Codigo de reaccion", Usuario_idUsuario as "ID de usuario",
  Video_idVideo "Video" FROM reaccion order by fecha desc limit 10;
