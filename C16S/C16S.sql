@@ -13,6 +13,11 @@ SELECT p.productoNombre, p.CategoriaID, prov.Contacto
 FROM proveedores prov 
 right JOIN productos p ON p.ProveedorID = prov.ProveedorID;
 
+SELECT p.productoNombre, c.CategoriaNombre, prov.Contacto
+FROM productos p
+right JOIN proveedores prov ON p.ProveedorID = prov.ProveedorID
+JOIN categorias c ON c.categoriaID = p.CategoriaID;
+
 # 4- Para cada categoría listar el promedio del precio unitario de sus productos.
 SELECT c.CategoriaNombre, avg(p.precioUnitario) 
 FROM categorias c 
@@ -27,13 +32,14 @@ FROM clientes c
 LEFT JOIN facturas f ON c.clienteID = f.ClienteID  
 GROUP BY c.clienteID;
 
+
 # 6 -Todas las facturas tienen una empresa de correo asociada (enviovia). 
 # Generar un listado con todas las empresas de correo, y la cantidad de facturas correspondientes. 
 # Realizar la consulta utilizando RIGHT JOIN
 
 SELECT c.compania, count(*) FROM facturas f 
 right JOIN correos c ON f.envioVia = c.correoID
-GROUP BY c.CorreoID;                               # <<<<< NO SABEMOS SI ESETA BIEN!
+GROUP BY c.Compania;                               # <<<<< NO SABEMOS SI ESETA BIEN!
 
 
 
